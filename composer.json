@@ -1,0 +1,8 @@
+{
+    "name": "mattwellss/magento-composer-autoloader",
+    "type": "magento-module",
+    "require": {
+        "composer/composer": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

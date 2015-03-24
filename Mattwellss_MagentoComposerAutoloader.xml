@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Mattwellss_MagentoComposerAutoloader>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Mattwellss_MagentoComposerAutoloader>
+  </modules>
+</config>
