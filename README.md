@@ -35,3 +35,5 @@ The `VENDOR_ROOT` constant is the absolute path to your project's `vendor` direc
 ## Optimizing the Autoloader
 
 Aside from `composer dump -o`, running `php shell/classmap_generator.php` when deploying new code to production is recommended. That script generates a classmap file to be used by composer to speed autoloading of files in Magento's code pools.
+
+To enable use of the generated classmap, include `define('OPTIMIZED_COMPOSER', true)` in `includes/config.php`.
