@@ -39,7 +39,7 @@ class Mattwellss_MagentoComposerAutoloader_Compiler extends Mage_Shell_Abstract
     public function usageHelp()
     {
         return <<<USAGE
-Usage:  php -f compiler.php
+Usage:  php -f classmap_generator.php
 
 USAGE;
     }
