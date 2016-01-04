@@ -1,7 +1,9 @@
 {
     "name": "mattwellss/magento-composer-autoloader",
     "type": "magento-module",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "composer/composer": "1.0.0-alpha9"
+        "composer/composer": "~1.0"
     }
 }
