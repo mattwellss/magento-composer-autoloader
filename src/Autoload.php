@@ -85,23 +85,25 @@ class Varien_Autoload
         $autoloadFilename = VENDOR_ROOT . '/autoload.php';
 
         if (!file_exists($autoloadFilename)) {
-            echo $autoloadFilename." was not found. Is \"VENDOR_ROOT\" correctly defined?";
-            exit;
+            throw new Exception(
+                $autoloadFilename . " was not found. Is \"VENDOR_ROOT\" correctly defined?");
         }
 
-        $autoloader = require_once $autoloadFilename;
+        $autoloader = require $autoloadFilename;
 
         if (defined('OPTIMIZED_COMPOSER')) {
             self::registerClassMap($autoloader);
             return;
         }
 
-        $autoloader->add('', [
+        $paths = [
             BP . '/app/code/local/',
             BP . '/app/code/community/',
             BP . '/app/code/core/',
             BP . '/lib/',
-        ]);
+        ];
+
+        $autoloader->add('', $paths, true);
     }
 
     /**
