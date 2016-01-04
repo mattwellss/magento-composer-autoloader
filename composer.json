@@ -1,5 +1,6 @@
 {
     "name": "mattwellss/magento-composer-autoloader",
+    "license": "MIT",
     "type": "magento-module",
     "minimum-stability": "dev",
     "prefer-stable": true,
