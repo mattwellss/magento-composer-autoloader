@@ -1,4 +1,3 @@
 src/Autoload.php                            app/code/community/Varien/Autoload.php
-src/classmap_generator.php                   shell/classmap_generator.php
-src/abstract_composer.php                   shell/abstract_composer.php
+src/classmap_generator.php                  shell/classmap_generator.php
 Mattwellss_MagentoComposerAutoloader.xml    app/etc/modules/Mattwellss_MagentoComposerAutoloader.xml

@@ -14,7 +14,7 @@ Complete and simple to install Composer autoloader or Magento
 
 ### Get The Files
 
-Add `"mattwells/magento-composer-autoloader": "~0.1"` to your `composer.json`'s `require` node. Also, **don't forget** to add the following to `repositories`!
+Add `"mattwellss/magento-composer-autoloader": "~0.1"` to your `composer.json`'s `require` node. Also, **don't forget** to add the following to `repositories`!
 ```json
 {
     "type": "vcs",
