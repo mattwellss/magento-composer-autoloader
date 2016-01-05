@@ -38,8 +38,6 @@ The two methods of describing the vendor root directory are:
 
 ## Optimizing the Autoloader
 
-**WARNING: WIP**
-
-Aside from `composer dump -o`, running `php shell/classmap_generator.php` when deploying new code to production is recommended. That script generates a classmap file to be used by composer to speed autoloading of files in Magento's code pools.
+Normally, `composer dump -o` is all one does to optimize a composer autoloader. However, running `php shell/classmap_generator.php` when deploying new code to production is recommended. The script generates a classmap file to be used by composer to speed autoloading of files in Magento's code pools.
 
 To enable use of the generated classmap, include `define('OPTIMIZED_COMPOSER', true)` in `includes/config.php`.

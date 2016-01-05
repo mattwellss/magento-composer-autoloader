@@ -17,6 +17,7 @@ class AutoloadTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Varien_Autoload', Varien_Autoload::instance());
     }
 
+
     public function testRegisterStandard()
     {
         Varien_Autoload::register();
@@ -95,6 +96,36 @@ class AutoloadTest extends PHPUnit_Framework_TestCase
         // For autoloading
         $this->assertArraySubset(
             $expectedPaths, $loader->getFallbackDirs());
+    }
+
+    public function testRegisterClassmap()
+    {
+        define('OPTIMIZED_COMPOSER', true);
+
+        $testClassname = 'c'.uniqid();
+        $testClassfilename = BP.'/lib/'.$testClassname.'.php';
+
+        $testClass = <<<CLASS
+<?php
+class {$testClassname} {}
+CLASS;
+
+
+        testfuncs\create_structure();
+        file_put_contents($testClassfilename, $testClass);
+
+        // Generate the classmap
+        require BP . '/../src/classmap_generator.php';
+
+        Varien_Autoload::register();
+        $loader = require __DIR__ . '/../vendor/autoload.php';
+
+        $classMap = $loader->getClassMap();
+
+        $this->assertArrayHasKey($testClassname, $classMap);
+
+        unlink($testClassfilename);
+        testfuncs\destroy_structure();
     }
 
 }
