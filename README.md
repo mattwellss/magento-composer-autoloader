@@ -26,13 +26,19 @@ This should only be a temporary solution until the project is listed on a real c
 
 ## Configuration
 
-Post install, the new `Varien_Autoload` class needs one more setting to use Composer instead of Magento to autoload: The `VENDOR_ROOT` constant. Generally it's best to configure this in your index file as well as any other entrypoints, such as `cron.php`, `api.php` and others.
+Post install, the new `Varien_Autoload` class needs to know where `vendor/autoload.php` is hiding. This must be configured.
 
-### `VENDOR_ROOT`
+### Defining the vendor root directory
 
-The `VENDOR_ROOT` constant is the absolute path to your project's `vendor` directory, such that `VENDOR_ROOT . '/autoload.php'` resolves correctly to Composer autoload file. It'd be real nice to not put this config on you our users, but there's no known way around it.
+Regardless of how the vendor dir is defined, it **must not end with a trailing slash**.
+
+The two methods of describing the vendor root directory are:
+- `VENDOR_ROOT` constant. Must be defined _in all entry points_.
+- `MAGE_VENDOR_ROOT` env variable. Be sure it's defined for **all** PHP environments (cli and fpm/mod_php).
 
 ## Optimizing the Autoloader
+
+**WARNING: WIP**
 
 Aside from `composer dump -o`, running `php shell/classmap_generator.php` when deploying new code to production is recommended. That script generates a classmap file to be used by composer to speed autoloading of files in Magento's code pools.
 

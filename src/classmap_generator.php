@@ -5,7 +5,7 @@
 
 use Composer\Autoload\ClassMapGenerator;
 
-require_once 'abstract_composer.php';
+require_once 'abstract.php';
 
 /**
  * Magento Compiler Shell Script

@@ -68,11 +68,47 @@ class Varien_Autoload
     }
 
     /**
+     * Returns vendor root directory
+     * @return string|false
+     */
+    public static function getVendorRootDir()
+    {
+        if (isset($_ENV['MAGE_VENDOR_ROOT'])) {
+            return $_ENV['MAGE_VENDOR_ROOT'];
+        }
+
+        if (defined('VENDOR_ROOT')) {
+            return VENDOR_ROOT;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get an instance of the Composer Autoloader
+     *
+     * @return Composer\Autoload\ClassLoader
+     * @throws Exception
+     */
+    private static function getComposerAutoloader()
+    {
+        $vendorDir = self::getVendorRootDir();
+
+        $autoloadFilename = $vendorDir . '/autoload.php';
+        if (!file_exists($autoloadFilename)) {
+            throw new Exception(
+                'The composer autoload.php file was not found. See README for more information');
+        }
+
+        return require $autoloadFilename;
+    }
+
+    /**
      * Register SPL autoload function
      */
     static public function register()
     {
-        if (!defined('VENDOR_ROOT')) {
+        if (!self::getVendorRootDir()) {
             spl_autoload_register(array(self::instance(), 'autoload'));
             return;
         }
@@ -80,16 +116,14 @@ class Varien_Autoload
         self::registerComposerAutoloader();
     }
 
-    public static function registerComposerAutoloader()
+    /**
+     * Add Magento's paths to the Composer autoload directory fallback
+     * @return void
+     * @throws Exception
+     */
+    private static function registerComposerAutoloader()
     {
-        $autoloadFilename = VENDOR_ROOT . '/autoload.php';
-
-        if (!file_exists($autoloadFilename)) {
-            throw new Exception(
-                $autoloadFilename . " was not found. Is \"VENDOR_ROOT\" correctly defined?");
-        }
-
-        $autoloader = require $autoloadFilename;
+        $autoloader = self::getComposerAutoloader();
 
         if (defined('OPTIMIZED_COMPOSER')) {
             self::registerClassMap($autoloader);
