@@ -77,6 +77,10 @@ class Varien_Autoload
             return getenv('MAGE_VENDOR_ROOT');
         }
 
+        if (getenv('REDIRECT_MAGE_VENDOR_ROOT')) {
+            return getenv('REDIRECT_MAGE_VENDOR_ROOT');
+        }
+
         if (defined('VENDOR_ROOT')) {
             return VENDOR_ROOT;
         }
