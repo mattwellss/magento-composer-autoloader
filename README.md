@@ -12,9 +12,7 @@ Complete and simple to install Composer autoloader or Magento
 
 ## Installation
 
-### Get The Files
-
-Add `"mattwellss/magento-composer-autoloader": "~0.1"` to your `composer.json`'s `require` node. Also, **don't forget** to add the following to `repositories`!
+Until it's listed in packagist or firegento, add the repository to your `composer.json`:
 ```json
 {
     "type": "vcs",
@@ -22,7 +20,12 @@ Add `"mattwellss/magento-composer-autoloader": "~0.1"` to your `composer.json`'s
 }
 ```
 
-This should only be a temporary solution until the project is listed on a real composer registry!
+Add the library to your `require` section:
+```json
+"require": {
+    "mattwellss/magento-composer-autoloader": "~1.0"
+}
+```
 
 ## Configuration
 
