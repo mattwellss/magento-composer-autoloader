@@ -73,8 +73,8 @@ class Varien_Autoload
      */
     public static function getVendorRootDir()
     {
-        if (isset($_ENV['MAGE_VENDOR_ROOT'])) {
-            return $_ENV['MAGE_VENDOR_ROOT'];
+        if (isset($_SERVER['MAGE_VENDOR_ROOT'])) {
+            return $_SERVER['MAGE_VENDOR_ROOT'];
         }
 
         if (defined('VENDOR_ROOT')) {

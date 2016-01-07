@@ -38,7 +38,7 @@ class AutoloadTest extends PHPUnit_Framework_TestCase
 
     public function testRegisterWithEnv()
     {
-        $_ENV['MAGE_VENDOR_ROOT'] = __DIR__ . '/../vendor';
+        $_SERVER['MAGE_VENDOR_ROOT'] = __DIR__ . '/../vendor';
 
         Varien_Autoload::register();
 
