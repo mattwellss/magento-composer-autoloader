@@ -73,10 +73,12 @@ class Varien_Autoload
      */
     public static function getVendorRootDir()
     {
+        // Checks for variable if done in Vhosts config.
         if (getenv('MAGE_VENDOR_ROOT')) {
             return getenv('MAGE_VENDOR_ROOT');
         }
 
+        // Checks for variable if done in .htaccess file.
         if (getenv('REDIRECT_MAGE_VENDOR_ROOT')) {
             return getenv('REDIRECT_MAGE_VENDOR_ROOT');
         }
